@@ -5,6 +5,8 @@
     - Components
     - Propreties
     - React Native Iphone X Helper
+    - React Navigation
+    - ScrollView
   - Expo
     - Expo Fonts
       - `expo install expo-font @expo-google-fonts/inter`
@@ -14,4 +16,6 @@
         - `import { Inter_500Medium , Inter_700Bold } from '@expo-google-fonts/inter';`
       - Expo Loading
       - Expo Gradient
+      - Expo Vector Icons
+      - Expo Svg
             

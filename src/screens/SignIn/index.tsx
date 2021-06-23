@@ -3,7 +3,6 @@ import {
     View ,
     Text, 
     Image,
-    StatusBar
   } from 'react-native';
 
 import { styles } from './styles';
@@ -14,11 +13,7 @@ export function SignIn(){
 
   return (
     <View style={styles.container}>
-      <StatusBar 
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
+     
       
       <Image 
         source={illustrationImg} 
@@ -34,7 +29,7 @@ export function SignIn(){
           </Text>
 
           <Text style={styles.subtitle}>
-            Cria um grupo e aproveita {'\n'}
+            Cria um grupo e aproveita os melhores jogos {'\n'}
             com os teus amigos
           </Text>
 

@@ -4,12 +4,12 @@ import { View, Image, Text} from 'react-native';
 
 import { styles } from './styles';
 
-type ListHeanderProps = {
+type ListHeaderProps = {
   title: string,
   subTitle: string,
 }
 
-export function ListHeander({title, subTitle}: ListHeanderProps){
+export function ListHeader({title, subTitle}: ListHeaderProps){
   return (
     <View style={styles.container}>
       <Text style={styles.title}>

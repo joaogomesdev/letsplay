@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { FlatList, View , Text } from 'react-native'
+import React, { useState } from 'react';
+import { View, FlatList } from 'react-native';
+
+import { CategoryList } from '../../components/CategoryList';
+import { Appointment } from '../../components/Appointment';
+import { ListDivider } from '../../components/ListDivider';
+import { ListHeader } from '../../components/ListHeader';
+import { ButtonAdd } from '../../components/ButtonAdd';
+import { Profile } from '../../components/Profile';
+import { Background } from '../../components/Background';
+
 
 import { styles } from './styles';
 
-import { ButtonAdd } from '../../components/ButtonAdd';
-import { CategoryList } from '../../components/CategoryList';
-import { ListHeander } from '../../components/ListHeader';
-import { Profile } from '../../components/Profile';
-import { Appointment } from '../../components/Appointment';
-
-
-
 export function Home() {
-
   const [category, setCategory] = useState('');
-
-  function handleCategorySelect(categoryId: string) {
-      categoryId === category ? setCategory('') : setCategory(categoryId)
-  }
 
   const appointments = [
     {
@@ -30,55 +25,59 @@ export function Home() {
         owner: true
       },
       category: '1',
-      date: '22/06 ás 20:00',
-      description: 'Bla vla vla vla vla vla vla vbla vla vla vla vla vlas'
+      date: '22/06 às 20:40h',
+      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'      
     },
     {
       id: '2',
       guild: {
-        id: '2',
-        name: 'Os Mamões',
+        id: '1',
+        name: 'Lendários',
         icon: null,
         owner: true
       },
-      category: '2',
-      date: '30/06 ás 19:00',
-      description: 'Bla vla vla vla vla vla vla vbla vla vla vla vla vlas'
+      category: '1',
+      date: '22/06 às 20:40h',
+      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'      
     },
+    
   ]
 
+  function handleCategorySelect(categoryId: string) {
+    categoryId === category ? setCategory('') : setCategory(categoryId);
+  }  
+
   return (
-    <View>
+
+    <Background>
       <View style={styles.header}>
         <Profile />
         <ButtonAdd />
       </View>
-      <View >
-        <CategoryList 
-          categorySelected={category}
-          setCategory={handleCategorySelect}
+    
+      <CategoryList 
+        categorySelected={category}
+        setCategory={handleCategorySelect}
+        // hasCheckedBox={true}
+      />
+
+      <View style={styles.content}>
+        <ListHeader 
+          title="Partidas marcadas"
+          subTitle="Total 6"
         />
 
-        <View style={styles.content}>
-          <ListHeander 
-            title="Partidas marcadas"
-            subTitle="Total 6"
-          />
-
-          <FlatList 
+        <FlatList 
             data={appointments}
             keyExtractor={item => item.id}
-            renderItem={( { item } ) => (
-              <Appointment 
-                data={item}
-              />
-            )}
-          />
-        </View>
+            renderItem={({ item }) => (
+            <Appointment data={item} />            
+          )}
+          ItemSeparatorComponent={() => <ListDivider />}
+          style={styles.matches}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-    </View>
-    
-    
-  );
+    </Background>
+  );  
 }
-

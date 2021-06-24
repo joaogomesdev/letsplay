@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import illustrationImg from '../../assets/illustration.png'
 import { ButtonIcon } from '../../components/ButtonIcon';
+import { Background } from '../../components/Background';
 
 
 
@@ -18,6 +19,8 @@ export function SignIn(){
     navigation.navigate('Home')
   }
   return (
+    <Background>
+
     <View style={styles.container}>
      
       
@@ -25,7 +28,7 @@ export function SignIn(){
         source={illustrationImg} 
         style={styles.image} 
         resizeMode="stretch"
-      />
+        />
 
       <View style={styles.content}>
           <Text style={styles.title}>
@@ -42,10 +45,11 @@ export function SignIn(){
           <ButtonIcon 
             text="Entra com o discord"
             onPress={handleSignIn}
-          />               
+            />               
                
       </View>
     </View>
+  </Background>
     
   );
 }

@@ -12,10 +12,12 @@ import { Background } from '../../components/Background';
 
 
 import { styles } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 export function Home() {
   const navigation = useNavigation();
-
+  
+ 
   const [category, setCategory] = useState('');
 
   

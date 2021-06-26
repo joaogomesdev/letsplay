@@ -25,6 +25,9 @@ export function Home() {
   function handleAppointmentDetails() {
     navigation.navigate('AppointmentDetails')
   }  
+  function handleAppointmentCreate() {
+    navigation.navigate('AppointmentCreate')
+  }  
 
   const appointments = [
     {
@@ -60,7 +63,9 @@ export function Home() {
     <Background>
       <View style={styles.header}>
         <Profile />
-        <ButtonAdd />
+        <ButtonAdd 
+          onPress={handleAppointmentCreate}
+        />
       </View>
     
       <CategoryList 

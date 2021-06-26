@@ -37,7 +37,7 @@ export function AppointmentDetails()  {
       status: 'online'
     },
     {
-      id: 4,
+      id: 4 ,
       username: 'Dara Alves',
       avatar_url: 'https://github.com/Diego3g.png',
       status: 'offline'

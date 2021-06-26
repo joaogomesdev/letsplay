@@ -19,25 +19,25 @@ import { ButtonIcon } from '../../components/ButtonIcon';
 export function AppointmentDetails()  {
   const members = [
     {
-      id: 1,
+      id: '1',
       username: 'Dara Alves',
       avatar_url: 'https://github.com/JoaoGomes5.png',
       status: 'online'
     },
     {
-      id: 2,
+      id: '2',
       username: 'Dara Alves',
       avatar_url: 'https://github.com/Diego3g.png',
       status: 'offline'
     },
     {
-      id: 3,
+      id:'3',
       username: 'Dara Alves',
       avatar_url: 'https://github.com/JoaoGomes5.png',
       status: 'online'
     },
     {
-      id: 4 ,
+      id: '4',
       username: 'Dara Alves',
       avatar_url: 'https://github.com/Diego3g.png',
       status: 'offline'

@@ -24,7 +24,25 @@ export function Guilds({ handleGuildSelected }: GuildsProps){
       name: 'Galera do Game',
       icon: 'image.png',
       owner: true
-    }
+    },
+    {
+      id: '3',
+      name: 'Lendários',
+      icon: 'image.png',
+      owner: true
+    },
+    {
+      id: '4',
+      name: 'Galera do Game',
+      icon: 'image.png',
+      owner: true
+    },
+    {
+      id: '5',
+      name: 'Galera do Game',
+      icon: 'image.png',
+      owner: true
+    },
   ];
 
   return (
@@ -39,7 +57,9 @@ export function Guilds({ handleGuildSelected }: GuildsProps){
           />
         )}    
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <ListDivider />}
+        contentContainerStyle={{paddingBottom: 68 , paddingTop: 104}}
+        ListHeaderComponent={() => <ListDivider isCentered/>}
+        ItemSeparatorComponent={() => <ListDivider isCentered/>}
         style={styles.guilds}
       />
     </View>

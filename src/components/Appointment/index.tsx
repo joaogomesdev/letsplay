@@ -30,7 +30,7 @@ export function Appointment({ data, ...rest }: Props) {
   const { owner } = data.guild;
 
   const { primary, on } = theme.colors;
-  const { secondary50 ,secondary70 , heading} = theme.colors;
+  const { secondary50 ,secondary70 } = theme.colors;
 
   return (
     <RectButton {...rest}>
@@ -40,7 +40,10 @@ export function Appointment({ data, ...rest }: Props) {
           colors={[secondary50, secondary70]}
         >
 
-          <GuildIcon />
+          <GuildIcon 
+            guildId={data.guild.id}
+            iconId={data.guild.icon}
+          />
         </LinearGradient>
 
         <View style={styles.content}>

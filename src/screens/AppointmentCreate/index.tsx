@@ -7,7 +7,8 @@ import {
   KeyboardAvoidingView,
   Modal
 } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import uuid from 'react-native-uuid'
 import { Feather } from '@expo/vector-icons'
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -24,14 +25,23 @@ import { Button } from '../../components/Button';
 import { ModalView } from '../../components/ModalView';
 import { Guilds } from '../Guilds';
 import { GuildProps } from '../../components/Guild';
+import { COLLECTION_APPOINTMENTS } from '../../configs/storage';
+import { useNavigation } from '@react-navigation/core';
 
 
 
 export function AppointmentCreate()  {
-  const [openGuildModal, setOpenGuildsModal] = useState(false);
-  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+  const navigation = useNavigation();
 
+  const [openGuildModal, setOpenGuildsModal] = useState(false);
+  
   const [category, setCategory] = useState('');
+  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+  const [day,setDay] = useState('');
+  const [month,setMonth] = useState('');
+  const [hour, setHour] = useState('');
+  const [minute, setMinute] = useState('');
+  const [description, setDescription] = useState('');
 
 
   function handleCategorySelect(categoryId: string) {
@@ -49,6 +59,27 @@ export function AppointmentCreate()  {
   function handleSelectedGuild(selectedGuild: GuildProps) {
     setGuild(selectedGuild)
     setOpenGuildsModal(false)
+  }
+  
+  async function handleSave() {
+    const newAppointment = {
+      id: uuid.v4(),
+      guild,
+      category,
+      date: `${day}/${month} ás ${hour}:${minute}`,
+      description
+    }
+
+    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS)
+
+    const appoitments = storage ? JSON.parse(storage) : []
+
+    await AsyncStorage.setItem( 
+        COLLECTION_APPOINTMENTS, 
+        JSON.stringify([...appoitments, newAppointment])
+      );
+
+    navigation.navigate('Home')
   }
 
   return (
@@ -83,7 +114,10 @@ export function AppointmentCreate()  {
 
                 {      
                   guild.icon 
-                  ? <GuildIcon />
+                  ? <GuildIcon 
+                      guildId={guild.id} 
+                      iconId={guild.icon} 
+                    />
                   : <View style={styles.image}/>
                 }
 
@@ -113,11 +147,17 @@ export function AppointmentCreate()  {
                 </Text>  
 
                 <View style={styles.column}>
-                  <SmallInput maxLength={2}/>
+                  <SmallInput 
+                    maxLength={2}
+                    onChangeText={setDay}
+                  />
                   <Text style={styles.divider}>
                       /
                   </Text>
-                  <SmallInput maxLength={2}/>
+                  <SmallInput 
+                    maxLength={2}
+                    onChangeText={setMonth}
+                  />
                 </View> 
             </View> 
 
@@ -127,11 +167,17 @@ export function AppointmentCreate()  {
                 </Text>  
 
                 <View style={styles.column}>
-                  <SmallInput maxLength={2}/>
+                  <SmallInput 
+                    maxLength={2}
+                    onChangeText={setHour}
+                  />
                   <Text style={styles.divider}>
                       :
                   </Text>
-                  <SmallInput maxLength={2}/>
+                  <SmallInput 
+                    maxLength={2}
+                    onChangeText={setMinute}
+                  />
                 </View> 
             </View> 
             
@@ -150,16 +196,18 @@ export function AppointmentCreate()  {
         </View>
     
         <TextArea 
-          multiline
-          maxLength={100}
-          numberOfLines={5}
-          autoCorrect={false}
+            multiline
+            maxLength={100}
+            numberOfLines={5}
+            autoCorrect={false}
+            onChangeText={setDescription}
           />
 
         <View style={styles.footer}>
           <Button 
             text="Confirmar"
-            />
+            onPress={handleSave}
+          />
         </View>
       </View>
     </ScrollView>

@@ -3,9 +3,8 @@
 </h1>
 
 <p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=E51C44&labelColor=0A1033">
 
- <img src="https://i.imgur.com/8LelREQ.png" alt="APP" height="500" width="500"/>
+ <img src="https://i.imgur.com/8LelREQ.png" alt="APP"/>
 </p>
 
 

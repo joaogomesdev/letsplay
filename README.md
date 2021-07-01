@@ -5,11 +5,9 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=E51C44&labelColor=0A1033">
 
- <img src="https://i.imgur.com/8LelREQ.png" alt="APP" />
+ <img src="https://i.imgur.com/8LelREQ.png" alt="APP" height="200" width="200"/>
 </p>
 
-
-![cover](.github/cover.png?style=flat)
 
 
 ## 💻 Project
